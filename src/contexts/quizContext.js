@@ -7,7 +7,7 @@ export const QuizContext = createContext();
 const reducer = (state, action ) => {
 console.log(action)
 switch (action.type){
-    case "NEXT_QUESTION":{
+    case "NEXT_QUESTION":{ //если нажата кнопка next, мы получаем такой action и меняем индекс вопроса
         return{...state,
         currentQuestionIndex:state.currentQuestionIndex+1}
     };
