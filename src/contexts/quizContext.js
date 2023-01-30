@@ -4,14 +4,20 @@ import questions from "../data";
 const initialState = {
   questions,
   currentQuestionIndex: 0,
+  showResults:false
 };
 
 const reducer = (state, action) => {
- // console.log(action);
+   //console.log(state.questions);
   // eslint-disable-next-line default-case
   switch (action.type) {
     case "NEXT_QUESTION": {
-      return { ...state, currentQuestionIndex: state.currentQuestionIndex + 1 };
+       const showResults = state.currentQuestionIndex === state.questions.length - 1;
+       const currentQuestionIndex= showResults ? state.currentQuestionIndex : state.currentQuestionIndex + 1 
+      return { ...state,  
+        currentQuestionIndex,
+        showResults};
+        
     }
   }
   return state;
