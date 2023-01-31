@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const Answer = () => {
-    return (
-        <div>
-            Answer
-        </div>
-    );
+  return (
+    <div className="answer">
+      <div className="answer-text">{}</div>
+    </div>
+  );
 };
 
 export default Answer;

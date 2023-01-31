@@ -3,24 +3,29 @@ import questions from "../data";
 
 const initialState = {
   questions,
-  currentQuestionIndex: 0,
-  showResults:false
+  currentQuestionIndex: 7,
+  showResults: false,
+  correctAnswerCount: 0,
 };
 
 const reducer = (state, action) => {
-   //console.log(state.questions);
+  //console.log(state.questions);
   // eslint-disable-next-line default-case
   switch (action.type) {
     case "NEXT_QUESTION": {
-       const showResults = state.currentQuestionIndex === state.questions.length - 1;
-       const currentQuestionIndex= showResults ? state.currentQuestionIndex : state.currentQuestionIndex + 1 
-      return { ...state,  
-        currentQuestionIndex,
-        showResults};
-        
+      const showResults =
+        state.currentQuestionIndex === state.questions.length - 1;
+      const currentQuestionIndex = showResults
+        ? state.currentQuestionIndex
+        : state.currentQuestionIndex + 1;
+      return { ...state, currentQuestionIndex, showResults };
     }
+    case "RESTART": {
+      return initialState;
+    }
+    default:
+      return state;
   }
-  return state;
 };
 
 export const QuizContext = createContext();

@@ -1,7 +1,8 @@
-import React, { useContext,  } from "react";
+import React, { useContext } from "react";
 import { QuizContext } from "../contexts/quizContext";
 import Question from "./Question";
 import "../index.css";
+import Answer from "./Answer";
 
 const Quiz = () => {
   const [quizState, dispatch] = useContext(QuizContext);
@@ -16,6 +17,8 @@ const Quiz = () => {
             {quizState.questions.length}
           </div>
           <Question />
+          {}
+          <Answer />
           <div
             className="next-button"
             onClick={() => dispatch({ type: "NEXT_QUESTION" })}
@@ -28,15 +31,26 @@ const Quiz = () => {
             )}
             {/* Next question */}
           </div>
-          <div
+          {/* <div
             className="next-button"
             onClick={() => dispatch({ type: "PREVIOUS_QUESTION" })}
           >
             Previous question
-          </div>
+          </div> */}
         </div>
       ) : (
-        <div>Showing results</div>
+        <div className="results">
+          <div className="congratulations">Congratulations ! </div>
+          <div className="results-info">
+            <div>You have completed the quiz : </div>
+            <div>
+              {" "}
+              You've got {quizState.correctAnswerCount} of{" "}
+              {quizState.questions.length}
+            </div>
+            <div className="next-button" onClick={()=>dispatch({type:"RESTART"})} >Restart</div>
+          </div>
+        </div>
       )}
     </div>
   );
