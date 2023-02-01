@@ -41,7 +41,7 @@ const Quiz = () => {
               {quizState.questions.length}
             </div>
             <div
-              className="next-button"
+              className="restart-button"
               onClick={() => dispatch({ type: "RESTART" })}
             >
               Restart
